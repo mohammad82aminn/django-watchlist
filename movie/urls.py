@@ -1,0 +1,9 @@
+from django.urls import path
+
+from . import views
+
+app_name = "movie"
+
+urlpatterns = [
+    path("", views.movies_list_view, name="list"),
+]

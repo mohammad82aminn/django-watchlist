@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Watchlist</title>
+</head>
+<body>
+    <h1>Watchlist</h1>
+
+    {% for movie in movies_list %}
+        <h2>{{ movie.title }} ({{ movie.year }})</h2>
+        <p>Rating: {{ movie.rating }} / 10</p>
+        <p>{{ movie.review }}</p>
+        <hr>
+    {% empty %}
+        <p>No movies yet.</p>
+    {% endfor %}
+</body>
+</html>

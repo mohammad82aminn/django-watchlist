@@ -1,0 +1,253 @@
+/* ==========================================================
+   Watchlist — stylesheet (delivered by the Frontend team)
+   Colors and fonts live in the variables below.
+   ========================================================== */
+
+:root {
+    --screen: #14110f;
+    --screen-glow: #2a2118;
+    --card: #1e1a16;
+    --card-border: #2f2923;
+    --text: #f3ece2;
+    --text-soft: #a99f91;
+    --line: #2b2520;
+    --accent: #f2b33d;
+    --accent-ink: #1a1408;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    --font-display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--screen);
+    background-image: radial-gradient(ellipse at 50% -10%, var(--screen-glow) 0%, transparent 60%);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+main.container {
+    flex: 1;
+    padding-bottom: 72px;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+    border-bottom: 1px solid var(--line);
+}
+
+/* A thin film-strip line above the header */
+.site-header::before {
+    content: "";
+    display: block;
+    height: 6px;
+    background-image: repeating-linear-gradient(90deg, var(--accent) 0 14px, transparent 14px 26px);
+    opacity: 0.85;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: var(--accent-ink);
+    font-size: 0.85rem;
+    padding-left: 2px;
+}
+
+.brand-name {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    letter-spacing: 0.06em;
+    line-height: 1;
+}
+
+.header-tagline {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+}
+
+/* ---------- Page intro ---------- */
+
+.page-intro {
+    padding: 56px 0 32px;
+}
+
+.page-kicker {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.page-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.8rem, 8vw, 4.4rem);
+    letter-spacing: 0.03em;
+    line-height: 0.95;
+}
+
+.page-subtitle {
+    margin: 12px 0 0;
+    color: var(--text-soft);
+}
+
+/* ---------- Movies grid ---------- */
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 22px 22px;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    background-color: var(--card);
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.movie-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.movie-year {
+    color: var(--text-soft);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+}
+
+.movie-rating {
+    padding: 3px 10px;
+    border-radius: 999px;
+    background-color: var(--accent);
+    color: var(--accent-ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.movie-rating::before {
+    content: "\2605  ";
+}
+
+.movie-rating::after {
+    content: " / 10";
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+.movie-title {
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    overflow-wrap: anywhere;
+}
+
+.movie-review {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+}
+
+/* ---------- Empty state ---------- */
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 56px 24px;
+    border: 2px dashed var(--card-border);
+    border-radius: 16px;
+    text-align: center;
+}
+
+.empty-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+}
+
+.empty-hint {
+    margin: 6px 0 0;
+    color: var(--text-soft);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+    border-top: 1px solid var(--line);
+    padding: 20px 0;
+    color: var(--text-soft);
+    font-size: 0.85rem;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 560px) {
+    .header-tagline {
+        display: none;
+    }
+
+    .page-intro {
+        padding-top: 36px;
+    }
+}

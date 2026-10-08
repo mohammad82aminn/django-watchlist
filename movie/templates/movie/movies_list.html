@@ -1,19 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Watchlist</title>
-</head>
-<body>
-    <h1>Watchlist</h1>
+{% extends "_base.html" %}
 
-    {% for movie in movies_list %}
-        <h2>{{ movie.title }} ({{ movie.year }})</h2>
-        <p>Rating: {{ movie.rating }} / 10</p>
-        <p>{{ movie.review }}</p>
-        <hr>
-    {% empty %}
-        <p>No movies yet.</p>
-    {% endfor %}
-</body>
-</html>
+{% block page_title %}My watchlist · Watchlist{% endblock page_title %}
+
+{% block content %}
+    <section class="page-intro">
+        <p class="page-kicker">Now showing</p>
+        <h1 class="page-title">My watchlist</h1>
+        <p class="page-subtitle">Every movie I've seen, with a rating out of 10.</p>
+    </section>
+
+    <section class="movies-grid">
+        {% for movie in movies_list %}
+            <article class="movie-card">
+                <div class="movie-meta">
+                    <span class="movie-year">{{ movie.year }}</span>
+                    <span class="movie-rating">{{ movie.rating }}</span>
+                </div>
+                <h2 class="movie-title">{{ movie.title }}</h2>
+                <p class="movie-review">{{ movie.review }}</p>
+            </article>
+        {% empty %}
+            <div class="empty-state">
+                <p class="empty-title">No movies yet.</p>
+                <p class="empty-hint">Add your first movie from the admin panel.</p>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock content %}
